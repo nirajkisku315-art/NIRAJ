@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>NIRAJ — Video Editor</title>
   <meta name="description" content="Portfolio of Niraj — High-impact, retention-focused video editor for creators and brands.">
 
@@ -72,7 +72,7 @@
     <section class="snap-section section-hero" id="hero">
       <!-- Full-screen Seamless Background Video (bg1.mp4) -->
       <div class="video-bg-wrap">
-        <video class="bg-video" autoplay muted loop playsinline poster="">
+        <video class="bg-video" autoplay muted loop playsinline webkit-playsinline preload="metadata">
           <source src="bg1.mp4" type="video/mp4">
         </video>
         <!-- Subtle dark vignette so text is crisp and video stays vibrant -->
@@ -103,7 +103,7 @@
     <section class="snap-section section-worked" id="worked-with">
       <!-- Full-screen Background Video (bg2.mp4) with Dark-Warm Gradient Fallback -->
       <div class="video-bg-wrap">
-        <video class="bg-video fallback-capable" autoplay muted loop playsinline>
+        <video class="bg-video fallback-capable" autoplay muted loop playsinline webkit-playsinline preload="metadata">
           <source src="bg2.mp4" type="video/mp4">
         </video>
         <div class="video-overlay overlay-medium"></div>
@@ -297,7 +297,7 @@
     <section class="snap-section section-contact" id="contact">
       <!-- Full-screen Background Video (bg3.mp4) with Dark-Warm Gradient Fallback -->
       <div class="video-bg-wrap">
-        <video class="bg-video fallback-capable" autoplay muted loop playsinline>
+        <video class="bg-video fallback-capable" autoplay muted loop playsinline webkit-playsinline preload="metadata">
           <source src="bg3.mp4" type="video/mp4">
         </video>
         <div class="video-overlay overlay-medium"></div>
@@ -410,6 +410,23 @@
                 <div class="btn-label-group">
                   <span class="btn-platform">X (Twitter)</span>
                   <span class="btn-handle">@niraj_edits</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
+              </a>
+
+              <!-- 
+                =================================================================
+                [CONTACT LINK: FACEBOOK]
+                Replace URL: 'https://facebook.com/yourhandle'
+                =================================================================
+              -->
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="contact-btn btn-facebook">
+                <div class="btn-icon">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div class="btn-label-group">
+                  <span class="btn-platform">Facebook</span>
+                  <span class="btn-handle">Niraj Edits</span>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square btn-arrow"></i>
               </a>

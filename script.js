@@ -22,7 +22,7 @@
   const creatorCards = document.querySelectorAll('.creator-card');
 
   /* ----------------------------------------------------------------------------
-     1. 3D MOUSE PARALLAX ON HERO TITLE 'NIRAJ'
+     1. 3D MOUSE PARALLAX ON HERO TITLE (Desktop Only via pointer: fine)
      ---------------------------------------------------------------------------- */
   let mouse = {
     x: 0,
@@ -33,16 +33,18 @@
 
   const windowHalfX = window.innerWidth / 2;
   const windowHalfY = window.innerHeight / 2;
+  const pointerFineQuery = window.matchMedia('(pointer: fine)');
+  let parallaxRafId = null;
 
-  // Track mouse position over the window / hero section
-  window.addEventListener('mousemove', (e) => {
-    // Normalized coordinates between -1 and 1
+  function onMouseMove(e) {
     mouse.targetX = (e.clientX - windowHalfX) / windowHalfX;
     mouse.targetY = (e.clientY - windowHalfY) / windowHalfY;
-  });
+  }
 
-  // Smooth lerp loop with requestAnimationFrame
+  // Smooth lerp loop with requestAnimationFrame (runs strictly on Desktop PC)
   function render3dParallax() {
+    if (!pointerFineQuery.matches) return;
+
     mouse.x += (mouse.targetX - mouse.x) * 0.08;
     mouse.y += (mouse.targetY - mouse.y) * 0.08;
 
@@ -61,18 +63,38 @@
       }
     }
 
-    requestAnimationFrame(render3dParallax);
+    parallaxRafId = requestAnimationFrame(render3dParallax);
   }
-  render3dParallax();
 
-  // Mobile Device Orientation Gyroscope Support
-  if (window.DeviceOrientationEvent && 'ontouchstart' in window) {
-    window.addEventListener('deviceorientation', (e) => {
-      if (e.gamma !== null && e.beta !== null) {
-        mouse.targetX = Math.min(Math.max(e.gamma / 20, -1), 1);
-        mouse.targetY = Math.min(Math.max((e.beta - 45) / 20, -1), 1);
+  function setupParallax() {
+    if (pointerFineQuery.matches) {
+      // Desktop PC: Enable smooth 3D mouse parallax
+      window.addEventListener('mousemove', onMouseMove, { passive: true });
+      if (!parallaxRafId) {
+        render3dParallax();
       }
-    });
+    } else {
+      // Touchscreens / Mobile / Tablet: Cleanly disable mouse-move tilt to keep touch scroll buttery smooth
+      window.removeEventListener('mousemove', onMouseMove);
+      if (parallaxRafId) {
+        cancelAnimationFrame(parallaxRafId);
+        parallaxRafId = null;
+      }
+      if (hero3dWrapper) {
+        hero3dWrapper.style.transform = 'none';
+      }
+      if (heroTitle) {
+        heroTitle.style.filter = 'drop-shadow(0 12px 28px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 40px rgba(229, 9, 20, 0.5))';
+      }
+    }
+  }
+
+  // Initialize and listen for responsive device pointer mode changes
+  setupParallax();
+  if (typeof pointerFineQuery.addEventListener === 'function') {
+    pointerFineQuery.addEventListener('change', setupParallax);
+  } else if (typeof pointerFineQuery.addListener === 'function') {
+    pointerFineQuery.addListener(setupParallax);
   }
 
 
