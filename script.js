@@ -121,13 +121,16 @@
   // Detect which section is currently snapped/visible
   if (scrollContainer) {
     scrollContainer.addEventListener('scroll', () => {
-      const scrollTop = scrollContainer.scrollTop;
-      const sectionHeight = window.innerHeight;
-      const index = Math.round(scrollTop / sectionHeight);
+      let activeIndex = 0;
+      const scrollPos = scrollContainer.scrollTop + window.innerHeight * 0.4;
 
-      if (index >= 0 && index < sections.length) {
-        updateActiveNavigation(index);
-      }
+      sections.forEach((sec, idx) => {
+        if (sec.offsetTop <= scrollPos) {
+          activeIndex = idx;
+        }
+      });
+
+      updateActiveNavigation(activeIndex);
     }, { passive: true });
   }
 

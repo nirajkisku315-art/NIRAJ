@@ -704,7 +704,361 @@ html, body {
    -------------------------------------------------------------------------- */
 .section-contact {
   flex-direction: column;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem 4.5rem;
+  height: auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.section-contact .section-content {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-contact .video-bg-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+/* ==========================================================================
+   LIQUID GLASS EDITING PACKAGES SHOWCASE
+   ========================================================================== */
+.packages-glass-container {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2.25rem 2.75rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    inset 0 0 30px rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+}
+
+/* Liquid Glass Specular Ambient Light Flare */
+.packages-glass-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 60%;
+  height: 120px;
+  background: radial-gradient(ellipse at top, rgba(251, 146, 60, 0.15), transparent 70%);
+  pointer-events: none;
+}
+
+/* Glass Header */
+.packages-header {
+  text-align: center;
+  margin-bottom: 2.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.packages-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+  background: rgba(251, 146, 60, 0.1);
+  border: 1px solid rgba(251, 146, 60, 0.3);
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 0.85rem;
+}
+
+.packages-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--text-white);
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.packages-subtext {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 0.45rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 3 Package Cards Grid */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  width: 100%;
+  align-items: stretch;
+  position: relative;
+  z-index: 2;
+}
+
+/* Individual Package Card */
+.package-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.2rem 1.6rem 1.8rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: transform 0.35s var(--ease-smooth), border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Middle Card Highlight: STANDARD (Most Popular) */
+.package-card.is-popular {
+  background: linear-gradient(180deg, rgba(251, 146, 60, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border: 1px solid rgba(251, 146, 60, 0.48);
+  border-top: 1px solid rgba(251, 146, 60, 0.7);
+  box-shadow: 
+    0 22px 50px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(251, 146, 60, 0.18),
+    inset 0 1px 0 rgba(251, 146, 60, 0.4);
+}
+
+.package-card.is-popular:hover {
+  transform: translateY(-8px);
+  border-color: rgba(251, 146, 60, 0.75);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.85),
+    0 0 45px rgba(251, 146, 60, 0.28),
+    inset 0 1px 0 rgba(251, 146, 60, 0.55);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #fb923c, #ea580c);
+  color: #050302;
+  font-family: var(--font-heading);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.95rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px rgba(251, 146, 60, 0.55);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.popular-badge i {
+  font-size: 0.72rem;
+}
+
+/* Card Top: Tier & Price */
+.package-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.package-tier {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.package-card.is-popular .package-tier {
+  color: var(--accent-warm);
+}
+
+.package-price-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.package-currency {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent-warm);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+.package-price {
+  font-family: var(--font-heading);
+  font-size: 2.85rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+}
+
+.package-title {
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
+  font-weight: 800;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.package-desc {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 1.35rem;
+  min-height: 48px;
+}
+
+/* Specs Box */
+.package-specs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.spec-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.spec-item i {
+  color: var(--accent-warm);
+  font-size: 0.82rem;
+  width: 14px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Features List */
+.package-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 1.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+.package-features li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.package-features li i {
+  color: #34d399; /* Green checkmark */
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* CTA Buttons */
+.btn-package {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 12px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-smooth);
+  margin-top: auto;
+}
+
+.btn-pkg-basic,
+.btn-pkg-premium {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-white);
+}
+
+.btn-pkg-basic:hover,
+.btn-pkg-premium:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--text-white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5);
+}
+
+.btn-pkg-standard {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  border: 1px solid rgba(251, 146, 60, 0.6);
+  color: #0b0705;
+  box-shadow: 0 8px 20px rgba(251, 146, 60, 0.35);
+}
+
+.btn-pkg-standard:hover {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(251, 146, 60, 0.55);
+}
+
+.btn-package i {
+  font-size: 0.8rem;
+  transition: transform 0.25s ease;
+}
+
+.btn-package:hover i {
+  transform: translateX(4px);
 }
 
 .contact-ratings-grid {
@@ -1012,9 +1366,37 @@ html, body {
   .tilt-5 { transform: rotate(-2deg); }
   .tilt-6 { transform: rotate(1.5deg); }
 
-  /* Section 3: Contact & Ratings on Tablet */
+  /* Section 3: Liquid Glass Packages & Contact on Tablet */
   .section-contact {
-    padding: 3.5rem 1.5rem;
+    padding: 5rem 1.5rem 4rem;
+  }
+  .packages-glass-container {
+    padding: 2.5rem 1.5rem 2.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 960px;
+  }
+  .packages-header {
+    margin-bottom: 2rem;
+  }
+  .packages-heading {
+    font-size: 2.3rem;
+  }
+  .packages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+  .package-card {
+    padding: 1.85rem 1.35rem 1.6rem;
+  }
+  .package-price {
+    font-size: 2.5rem;
+  }
+  .package-title {
+    font-size: 1.15rem;
+  }
+  .package-desc {
+    font-size: 0.84rem;
+    min-height: auto;
   }
   .contact-ratings-grid {
     grid-template-columns: 1fr 1fr;
@@ -1179,17 +1561,89 @@ html, body {
     font-size: 0.64rem;
   }
 
-  /* Section 3: Contact & Ratings on Mobile */
+  /* Section 3: Liquid Glass Packages & Contact on Mobile */
   .section-contact {
-    padding: 2rem 0.85rem 1.5rem;
+    padding: 4.5rem 0.85rem 3rem;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: visible;
   }
-  .section-content {
-    max-height: calc(100dvh - 3.2rem);
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 0.25rem 1rem;
+  .section-contact .section-content {
+    max-height: none;
+    overflow: visible;
+    padding: 0;
+    width: 100%;
+  }
+  .packages-glass-container {
+    padding: 2rem 1.15rem 1.85rem;
+    border-radius: 20px;
+    margin-bottom: 2.25rem;
+    width: 100%;
+    max-width: 440px;
+  }
+  .packages-header {
+    margin-bottom: 1.75rem;
+  }
+  .packages-tag {
+    font-size: 0.68rem;
+    padding: 0.3rem 0.75rem;
+  }
+  .packages-heading {
+    font-size: 1.85rem;
+  }
+  .packages-subtext {
+    font-size: 0.82rem;
+  }
+  .packages-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .package-card {
+    padding: 1.75rem 1.25rem 1.5rem;
+    border-radius: 18px;
+  }
+  .package-card.is-popular {
+    margin-top: 0.5rem;
+  }
+  .package-tier {
+    font-size: 0.85rem;
+  }
+  .package-price {
+    font-size: 2.4rem;
+  }
+  .package-currency {
+    font-size: 1.2rem;
+  }
+  .package-title {
+    font-size: 1.15rem;
+  }
+  .package-desc {
+    font-size: 0.82rem;
+    min-height: auto;
+    margin-bottom: 1rem;
+  }
+  .package-specs-grid {
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 1rem;
+    gap: 0.45rem;
+  }
+  .spec-item {
+    font-size: 0.78rem;
+  }
+  .package-features {
+    gap: 0.5rem;
+    margin-bottom: 1.4rem;
+  }
+  .package-features li {
+    font-size: 0.8rem;
+  }
+  .btn-package {
+    min-height: 46px;
+    font-size: 0.9rem;
   }
   .contact-ratings-grid {
     grid-template-columns: 1fr;
@@ -1299,5 +1753,11 @@ html, body {
   }
   .card-deck {
     gap: 0.5rem;
+  }
+  .packages-heading {
+    font-size: 1.6rem;
+  }
+  .package-price {
+    font-size: 2.1rem;
   }
 }
